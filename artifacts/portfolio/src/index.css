@@ -1150,7 +1150,7 @@ nav.sidebar-nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4vw, 24px);
+    padding: clamp(20px, 5vw, 28px) clamp(14px, 4vw, 24px);
 
     /* Fade + slide-down animation state */
     opacity: 0;
