@@ -316,48 +316,38 @@ function Sidebar({
   );
 }
 
-function MobileHero({ onNavClick }: { onNavClick: (id: string) => void }) {
+function MobileHero({ onNavClick, typewriterText }: { onNavClick: (id: string) => void; typewriterText: string }) {
   return (
     <div className="mobile-hero" id="mobile-hero">
       <div className="mobile-hero-profile-wrap">
-        <div className="mobile-hero-photo"><img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" /></div>
-        <div className="mobile-hero-ring" />
-        <div className="mobile-hero-ring-2" />
+        <div className="mobile-hero-photo">
+          <img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" />
+        </div>
       </div>
 
       <div className="mobile-hero-name">
-        Jefferson T. Perolino
+        Jefferson<br />T. Perolino
       </div>
       <div className="mobile-hero-role">Biotechnologist · Researcher</div>
-      <div className="mobile-hero-location">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-        </svg>
-        Iloilo City, Philippines
-      </div>
+
       <div className="mobile-hero-avail">
         <span className="avail-dot" />
         Open to Research Opportunities
       </div>
+
+      {typewriterText && (
+        <div className="mobile-hero-typewriter">
+          {typewriterText}<span className="tw-cursor">|</span>
+        </div>
+      )}
+
       <p className="mobile-hero-desc">
         A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at West Visayas State University — grounded in molecular techniques, driven by sustainable science.
       </p>
-      <nav className="mobile-hero-nav">
-        {NAV_ITEMS.map((item) => (
-          <button
-            key={item.id}
-            className="mobile-hero-nav-item"
-            onClick={() => onNavClick(item.id)}
-          >
-            {item.label}
-          </button>
-        ))}
-      </nav>
-      <div className="scroll-hint">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
-        Scroll to explore
+
+      <div className="mobile-hero-cta">
+        <button className="mh-btn-primary" onClick={() => onNavClick('contact')}>Get in touch</button>
+        <button className="mh-btn-secondary" onClick={() => onNavClick('projects')}>View research</button>
       </div>
     </div>
   );
@@ -972,7 +962,7 @@ export default function Portfolio() {
         )}
 
         <main className="main">
-          {isMobile && <MobileHero onNavClick={scrollToSection} />}
+          {isMobile && <MobileHero onNavClick={scrollToSection} typewriterText={typewriterText} />}
           <div className={isMobile ? "mobile-main-content" : ""}>
             <MainContent
               activeSection={activeSection}
