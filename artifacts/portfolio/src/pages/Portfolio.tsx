@@ -406,6 +406,110 @@ function MobileStickyHeader({
   );
 }
 
+function IconLandmark() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/>
+      <polygon points="12 2 20 7 4 7"/>
+    </svg>
+  );
+}
+function IconMic() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10a7 7 0 0 1-14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/>
+    </svg>
+  );
+}
+function IconTent() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3.5 21 12 3l8.5 18"/><path d="M12 3 7 14h10L12 3z"/><line x1="3.5" y1="21" x2="20.5" y2="21"/>
+    </svg>
+  );
+}
+function IconAward() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    </svg>
+  );
+}
+function IconStar() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    </svg>
+  );
+}
+function IconGradCap() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+    </svg>
+  );
+}
+
+type AwardItem = { year: string; title: string; org: string; icon: React.ReactNode };
+
+const ROW1_AWARDS: AwardItem[] = [
+  { year: "2023 – Present", title: "DOST-SEI Undergraduate Scholarship (RA 7687)", org: "Dept. of Science and Technology, Philippines", icon: <IconLandmark /> },
+  { year: "2025", title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review", org: "Guimaras State University, Mosqueda Conference Hall", icon: <IconMic /> },
+  { year: "2025", title: "Science Leadership Camp Delegate", org: "DOST-SEI Filipino Patriot Scholars Program", icon: <IconTent /> },
+  { year: "AY 2024–2025", title: "Parangal Silver Award — 2nd Year", org: "West Visayas State University", icon: <IconAward /> },
+  { year: "AY 2023–2024", title: "Parangal Silver Award — 1st Year", org: "West Visayas State University", icon: <IconAward /> },
+  { year: "AY 2022–2023", title: "With Highest Honors — 2nd Quarter", org: "Hinigaran National High School", icon: <IconStar /> },
+  { year: "AY 2020–2021", title: "With Highest Honors — Batch Salutatorian", org: "NONASHII, Hinigaran, Negros Occidental", icon: <IconGradCap /> },
+];
+
+const ROW2_AWARDS: AwardItem[] = [
+  { year: "AY 2020–2021", title: "With Highest Honors — Batch Salutatorian", org: "NONASHII, Hinigaran, Negros Occidental", icon: <IconGradCap /> },
+  { year: "AY 2023–2024", title: "Parangal Silver Award — 1st Year", org: "West Visayas State University", icon: <IconAward /> },
+  { year: "2023 – Present", title: "DOST-SEI Undergraduate Scholarship (RA 7687)", org: "Dept. of Science and Technology, Philippines", icon: <IconLandmark /> },
+  { year: "AY 2022–2023", title: "With Highest Honors — 2nd Quarter", org: "Hinigaran National High School", icon: <IconStar /> },
+  { year: "2025", title: "Science Leadership Camp Delegate", org: "DOST-SEI Filipino Patriot Scholars Program", icon: <IconTent /> },
+  { year: "AY 2024–2025", title: "Parangal Silver Award — 2nd Year", org: "West Visayas State University", icon: <IconAward /> },
+  { year: "2025", title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review", org: "Guimaras State University, Mosqueda Conference Hall", icon: <IconMic /> },
+];
+
+function AwardCard({ item }: { item: AwardItem }) {
+  return (
+    <div className="award-card">
+      <div className="award-card-icon">{item.icon}</div>
+      <div className="award-card-text">
+        <div className="award-card-year">{item.year}</div>
+        <div className="award-card-title">{item.title}</div>
+        <div className="award-card-org">{item.org}</div>
+      </div>
+    </div>
+  );
+}
+
+function AwardsMarquee() {
+  return (
+    <section className="section reveal" id="awards">
+      <div className="sec-head">
+        <span className="sec-label">Scholarships & Recognition</span>
+        <div className="sec-line" />
+      </div>
+      <div className="marquee-outer">
+        <div className="marquee-track">
+          {[...ROW1_AWARDS, ...ROW1_AWARDS].map((item, i) => (
+            <AwardCard key={i} item={item} />
+          ))}
+        </div>
+      </div>
+      <div className="marquee-outer" style={{ marginTop: 14 }}>
+        <div className="marquee-track reverse">
+          {[...ROW2_AWARDS, ...ROW2_AWARDS].map((item, i) => (
+            <AwardCard key={i} item={item} />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const FORMSPREE_URL = "https://formspree.io/f/mnjwvwry";
 
 function ContactSection() {
@@ -767,60 +871,7 @@ function MainContent({
       </section>
 
       {/* AWARDS */}
-      <section className="section reveal" id="awards">
-        <div className="sec-head">
-          <span className="sec-label">Scholarships & Recognition</span>
-          <div className="sec-line" />
-        </div>
-        <div className="awards-list stagger">
-          {[
-            {
-              year: "2023–Present",
-              title: "DOST-SEI Undergraduate Scholarship (RA 7687)",
-              org: "Department of Science and Technology, Philippines",
-            },
-            {
-              year: "2025",
-              title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review",
-              org: "Guimaras State University, Mosqueda Conference Hall",
-            },
-            {
-              year: "2025",
-              title: "Science Leadership Camp Delegate",
-              org: "DOST-SEI Filipino Patriot Scholars Program",
-            },
-            {
-              year: "AY 2024–2025",
-              title: "Parangal Silver Award — 2nd Year",
-              org: "West Visayas State University",
-            },
-            {
-              year: "AY 2023–2024",
-              title: "Parangal Silver Award — 1st Year",
-              org: "West Visayas State University",
-            },
-            {
-              year: "AY 2022–2023",
-              title: "With Highest Honors — 2nd Quarter",
-              org: "Hinigaran National High School",
-            },
-            {
-              year: "AY 2020–2021",
-              title: "With Highest Honors — Batch Salutatorian",
-              org: "NONASHII, Hinigaran, Negros Occidental",
-            },
-          ].map(({ year, title, org }) => (
-            <div key={title} className="award-row">
-              <div className="award-year">{year}</div>
-              <div className="award-dot" />
-              <div>
-                <div className="award-title">{title}</div>
-                <div className="award-org">{org}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+      <AwardsMarquee />
 
       {/* CONTACT */}
       <ContactSection />
