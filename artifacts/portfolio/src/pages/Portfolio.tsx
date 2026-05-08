@@ -1,5 +1,46 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 
+function useTheme() {
+  const [dark, setDark] = useState(() => {
+    if (typeof window === "undefined") return false;
+    const stored = localStorage.getItem("portfolio-theme");
+    if (stored) return stored === "dark";
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    localStorage.setItem("portfolio-theme", dark ? "dark" : "light");
+  }, [dark]);
+
+  const toggle = useCallback(() => setDark((d) => !d), []);
+  return { dark, toggle };
+}
+
+function SunIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="4"/>
+      <line x1="12" y1="2" x2="12" y2="4"/>
+      <line x1="12" y1="20" x2="12" y2="22"/>
+      <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
+      <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+      <line x1="2" y1="12" x2="4" y2="12"/>
+      <line x1="20" y1="12" x2="22" y2="12"/>
+      <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
+      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+    </svg>
+  );
+}
+
+function MoonIcon() {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    </svg>
+  );
+}
+
 const NAV_ITEMS = [
   { id: "about", label: "About" },
   { id: "research", label: "Research Areas" },
@@ -196,9 +237,13 @@ function ProfilePhoto({ size = 92 }: { size?: number }) {
 function Sidebar({
   activeSection,
   onNavClick,
+  dark,
+  onToggleTheme,
 }: {
   activeSection: string;
   onNavClick: (id: string) => void;
+  dark: boolean;
+  onToggleTheme: () => void;
 }) {
   return (
     <aside className="sidebar">
@@ -259,6 +304,13 @@ function Sidebar({
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.9 19.79 19.79 0 0 1 1 3.22 2 2 0 0 1 2.98 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
           </svg>
         </a>
+        <button
+          className="theme-toggle"
+          onClick={onToggleTheme}
+          title={dark ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {dark ? <SunIcon /> : <MoonIcon />}
+        </button>
       </div>
     </aside>
   );
@@ -315,10 +367,14 @@ function MobileStickyHeader({
   visible,
   activeSection,
   onNavClick,
+  dark,
+  onToggleTheme,
 }: {
   visible: boolean;
   activeSection: string;
   onNavClick: (id: string) => void;
+  dark: boolean;
+  onToggleTheme: () => void;
 }) {
   return (
     <div className={`mobile-sticky-header${visible ? " visible" : ""}`}>
@@ -338,6 +394,13 @@ function MobileStickyHeader({
             </button>
           ))}
         </nav>
+        <button
+          className="mobile-theme-toggle"
+          onClick={onToggleTheme}
+          title={dark ? "Switch to light mode" : "Switch to dark mode"}
+        >
+          {dark ? <SunIcon /> : <MoonIcon />}
+        </button>
       </div>
     </div>
   );
@@ -651,6 +714,7 @@ export default function Portfolio() {
   const [stickyVisible, setStickyVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const typewriterText = useTypewriter();
+  const { dark, toggle: toggleTheme } = useTheme();
   useScrollReveal();
   useCounterAnimation();
 
@@ -717,12 +781,19 @@ export default function Portfolio() {
           visible={stickyVisible}
           activeSection={activeSection}
           onNavClick={scrollToSection}
+          dark={dark}
+          onToggleTheme={toggleTheme}
         />
       )}
 
       <div className="layout">
         {!isMobile && (
-          <Sidebar activeSection={activeSection} onNavClick={scrollToSection} />
+          <Sidebar
+            activeSection={activeSection}
+            onNavClick={scrollToSection}
+            dark={dark}
+            onToggleTheme={toggleTheme}
+          />
         )}
 
         <main className="main">
