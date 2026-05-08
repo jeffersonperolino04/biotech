@@ -761,7 +761,7 @@ nav.sidebar-nav {
   align-items: flex-start;
 }
 
-.contact-info { flex: 0 0 220px; }
+.contact-info { flex: 0 0 240px; }
 
 .contact-info-head {
   font-size: 14.5px;
@@ -770,14 +770,14 @@ nav.sidebar-nav {
   margin-bottom: 26px;
 }
 
-.contact-detail { margin-bottom: 16px; }
+.contact-detail { margin-bottom: 20px; }
 
 .contact-lbl {
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-faint);
-  margin-bottom: 3px;
+  margin-bottom: 6px;
 }
 
 .contact-val {
@@ -786,7 +786,99 @@ nav.sidebar-nav {
   word-break: break-all;
 }
 
+.contact-email-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-email-row .contact-val {
+  font-weight: 500;
+}
+
+.copy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text-faint);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.copy-btn:hover {
+  color: var(--accent);
+  border-color: rgba(46,128,96,0.35);
+  background: rgba(46,128,96,0.05);
+}
+
+.copy-btn svg {
+  width: 13px;
+  height: 13px;
+}
+
+.contact-social-row {
+  display: flex;
+  gap: 9px;
+}
+
+.contact-social-btn {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.contact-social-btn:hover {
+  color: var(--accent);
+  border-color: rgba(46,128,96,0.4);
+  background: rgba(46,128,96,0.05);
+  transform: translateY(-1px);
+}
+
+.contact-social-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
 .contact-form { flex: 1; }
+
+.form-success {
+  font-size: 13px;
+  color: var(--accent);
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: rgba(46,128,96,0.08);
+  border: 1px solid rgba(46,128,96,0.2);
+  border-radius: 8px;
+}
+
+.form-error {
+  font-size: 13px;
+  color: #c0392b;
+  margin-bottom: 10px;
+  padding: 8px 12px;
+  background: rgba(192,57,43,0.06);
+  border: 1px solid rgba(192,57,43,0.2);
+  border-radius: 8px;
+}
+
+.btn-primary:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
 
 .form-row {
   display: flex;

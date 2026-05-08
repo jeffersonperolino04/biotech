@@ -406,6 +406,179 @@ function MobileStickyHeader({
   );
 }
 
+const FORMSPREE_URL = "https://formspree.io/f/mnjwvwry";
+
+function ContactSection() {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [copied, setCopied] = useState(false);
+
+  const EMAIL = "jeffersonperolino04@gmail.com";
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(EMAIL).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("sent");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <section className="section reveal" id="contact">
+      <div className="sec-head">
+        <span className="sec-label">Contact</span>
+        <div className="sec-line" />
+      </div>
+      <div className="contact-wrap">
+        {/* LEFT */}
+        <div className="contact-info">
+          <p className="contact-info-head">
+            Have a project in mind? Let's talk. I respond to all messages within 24 hours.
+          </p>
+
+          <div className="contact-detail">
+            <div className="contact-lbl">Email</div>
+            <div className="contact-email-row">
+              <span className="contact-val">{EMAIL}</span>
+              <button className="copy-btn" onClick={handleCopy} title="Copy email">
+                {copied ? (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                ) : (
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+
+          <div className="contact-detail">
+            <div className="contact-lbl">Social</div>
+            <div className="contact-social-row">
+              <a
+                className="contact-social-btn"
+                href="https://linkedin.com/in/jeffersonperolino"
+                target="_blank"
+                rel="noreferrer"
+                title="LinkedIn"
+              >
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
+              </a>
+              <a
+                className="contact-social-btn"
+                href={`mailto:${EMAIL}`}
+                title="Gmail"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-10 7L2 7" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* RIGHT — FORM */}
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <div className="form-row">
+            <div className="form-grp">
+              <label className="form-lbl">Name</label>
+              <input
+                className="form-input"
+                type="text"
+                name="name"
+                placeholder="John Doe"
+                value={form.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="form-grp">
+              <label className="form-lbl">Email</label>
+              <input
+                className="form-input"
+                type="email"
+                name="email"
+                placeholder="john@example.com"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-grp" style={{ flex: 1 }}>
+              <label className="form-lbl">Subject</label>
+              <input
+                className="form-input"
+                type="text"
+                name="subject"
+                placeholder="Project inquiry"
+                value={form.subject}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-grp" style={{ flex: 1 }}>
+              <label className="form-lbl">Message</label>
+              <textarea
+                className="form-ta"
+                name="message"
+                placeholder="Tell me about your project…"
+                value={form.message}
+                onChange={handleChange}
+                required
+              />
+            </div>
+          </div>
+
+          {status === "sent" && (
+            <p className="form-success">Message sent! I'll get back to you soon.</p>
+          )}
+          {status === "error" && (
+            <p className="form-error">Something went wrong. Please try again.</p>
+          )}
+
+          <button className="btn-primary" type="submit" disabled={status === "sending"}>
+            {status === "sending" ? "Sending…" : "Send Message"}
+          </button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
 function MainContent({
   activeSection,
   typewriterText,
@@ -650,56 +823,7 @@ function MainContent({
       </section>
 
       {/* CONTACT */}
-      <section className="section reveal" id="contact">
-        <div className="sec-head">
-          <span className="sec-label">Contact</span>
-          <div className="sec-line" />
-        </div>
-        <div className="contact-wrap">
-          <div className="contact-info">
-            <p className="contact-info-head">
-              Interested in research collaboration or opportunities? I respond to all messages within 24 hours.
-            </p>
-            <div className="contact-detail">
-              <div className="contact-lbl">Email</div>
-              <div className="contact-val">jefferson.perolino@wvsu.edu.ph</div>
-            </div>
-            <div className="contact-detail">
-              <div className="contact-lbl">University</div>
-              <div className="contact-val">West Visayas State University, Iloilo City</div>
-            </div>
-            <div className="contact-detail">
-              <div className="contact-lbl">LinkedIn</div>
-              <div className="contact-val">linkedin.com/in/jeffersonperolino</div>
-            </div>
-          </div>
-          <div className="contact-form">
-            <div className="form-row">
-              <div className="form-grp">
-                <label className="form-lbl">Name</label>
-                <input className="form-input" type="text" placeholder="Your name" />
-              </div>
-              <div className="form-grp">
-                <label className="form-lbl">Email</label>
-                <input className="form-input" type="email" placeholder="your@email.com" />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-grp" style={{ flex: 1 }}>
-                <label className="form-lbl">Subject</label>
-                <input className="form-input" type="text" placeholder="Research inquiry" />
-              </div>
-            </div>
-            <div className="form-row">
-              <div className="form-grp" style={{ flex: 1 }}>
-                <label className="form-lbl">Message</label>
-                <textarea className="form-ta" placeholder="Tell me about your project or inquiry…" />
-              </div>
-            </div>
-            <button className="btn-primary">Send Message</button>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
 
       <div className="footer">
         <p>© 2026 Jefferson T. Perolino · All rights reserved.</p>
