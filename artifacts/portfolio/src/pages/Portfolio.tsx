@@ -1390,7 +1390,7 @@ export default function Portfolio() {
       const hero = document.getElementById("mobile-hero");
       if (hero) {
         const heroBottom = hero.getBoundingClientRect().bottom;
-        setStickyVisible(heroBottom <= 0);
+        setStickyVisible(heroBottom <= window.innerHeight * 0.5);
       }
 
       const sectionIds = [
