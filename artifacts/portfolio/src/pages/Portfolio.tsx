@@ -226,7 +226,7 @@ function ProfilePhoto({ size = 92 }: { size?: number }) {
   return (
     <div className="profile-wrap" style={{ width: size, height: size }}>
       <div className="profile-photo" style={{ width: size, height: size, fontSize: size * 0.3 }}>
-        JP
+        <img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" />
       </div>
       <div className="profile-ring" />
       <div className="profile-ring-2" />
@@ -320,7 +320,7 @@ function MobileHero({ onNavClick }: { onNavClick: (id: string) => void }) {
   return (
     <div className="mobile-hero" id="mobile-hero">
       <div className="mobile-hero-profile-wrap">
-        <div className="mobile-hero-photo">JP</div>
+        <div className="mobile-hero-photo"><img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" /></div>
         <div className="mobile-hero-ring" />
         <div className="mobile-hero-ring-2" />
       </div>
@@ -380,7 +380,7 @@ function MobileStickyHeader({
     <div className={`mobile-sticky-header${visible ? " visible" : ""}`}>
       <div className="mobile-sticky-inner">
         <div className="mobile-sticky-left">
-          <div className="mobile-sticky-photo">JP</div>
+          <div className="mobile-sticky-photo"><img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" /></div>
           <div className="mobile-sticky-name">Jefferson T. Perolino</div>
         </div>
         <nav className="mobile-sticky-nav">
@@ -887,7 +887,7 @@ function MainContent({
 export default function Portfolio() {
   const [activeSection, setActiveSection] = useState("about");
   const [stickyVisible, setStickyVisible] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth <= 860);
   const typewriterText = useTypewriter();
   const { dark, toggle: toggleTheme } = useTheme();
   useScrollReveal();
