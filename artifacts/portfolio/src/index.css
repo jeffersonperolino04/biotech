@@ -543,6 +543,7 @@ nav.sidebar-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
+  max-width: 860px;
 }
 
 .r-card {
