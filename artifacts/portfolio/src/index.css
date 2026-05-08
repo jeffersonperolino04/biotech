@@ -1150,7 +1150,7 @@ nav.sidebar-nav {
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: clamp(8px, 2.5vw, 12px) clamp(14px, 4vw, 24px);
+    padding: clamp(12px, 3.5vw, 16px) clamp(14px, 4vw, 24px);
 
     /* Fade + slide-down animation state */
     opacity: 0;
@@ -1183,8 +1183,8 @@ nav.sidebar-nav {
   }
 
   .mobile-sticky-photo {
-    width: clamp(28px, 8vw, 38px);
-    height: clamp(28px, 8vw, 38px);
+    width: clamp(36px, 10vw, 46px);
+    height: clamp(36px, 10vw, 46px);
     border-radius: 50%;
     background: linear-gradient(135deg, #c6ddd2 0%, #9dc4b2 100%);
     display: flex;
@@ -1192,7 +1192,7 @@ nav.sidebar-nav {
     justify-content: center;
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: clamp(11px, 3vw, 15px);
+    font-size: clamp(14px, 4vw, 18px);
     font-weight: 600;
     color: var(--primary);
     border: 1.5px solid rgba(46,128,96,0.25);
@@ -1201,7 +1201,7 @@ nav.sidebar-nav {
 
   .mobile-sticky-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(14px, 4vw, 18px);
+    font-size: clamp(16px, 4.5vw, 20px);
     font-style: italic;
     font-weight: 600;
     color: var(--primary);
