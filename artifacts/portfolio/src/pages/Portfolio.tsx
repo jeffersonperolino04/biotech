@@ -1029,70 +1029,7 @@ function MainContent({
     <>
       {/* HERO */}
       <section className="hero">
-        <svg
-          className="hero-deco"
-          viewBox="0 0 240 200"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <circle cx="120" cy="100" r="70" stroke="#2e8060" strokeWidth="1.5" />
-          <circle cx="120" cy="100" r="50" stroke="#2e8060" strokeWidth="1" />
-          <circle cx="120" cy="100" r="30" stroke="#2e8060" strokeWidth="0.7" />
-          <circle cx="120" cy="30" r="6" fill="#2e8060" />
-          <circle cx="185" cy="65" r="4" fill="#2e8060" />
-          <circle cx="185" cy="135" r="4" fill="#2e8060" />
-          <circle cx="120" cy="170" r="6" fill="#2e8060" />
-          <circle cx="55" cy="135" r="4" fill="#2e8060" />
-          <circle cx="55" cy="65" r="4" fill="#2e8060" />
-          <line
-            x1="120"
-            y1="30"
-            x2="185"
-            y2="65"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-          <line
-            x1="185"
-            y1="65"
-            x2="185"
-            y2="135"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-          <line
-            x1="185"
-            y1="135"
-            x2="120"
-            y2="170"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-          <line
-            x1="120"
-            y1="170"
-            x2="55"
-            y2="135"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-          <line
-            x1="55"
-            y1="135"
-            x2="55"
-            y2="65"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-          <line
-            x1="55"
-            y1="65"
-            x2="120"
-            y2="30"
-            stroke="#2e8060"
-            strokeWidth="0.8"
-          />
-        </svg>
+ 
         <div className="hero-headline">
           <span>{typewriterText}</span>
           <span className="tw-cursor" />
