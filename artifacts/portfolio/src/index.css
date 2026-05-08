@@ -893,7 +893,7 @@ nav.sidebar-nav {
   height: 17px;
 }
 
-.contact-form { flex: 1; }
+.contact-form { flex: 1; max-width: 520px; }
 
 .form-success {
   font-size: 13px;

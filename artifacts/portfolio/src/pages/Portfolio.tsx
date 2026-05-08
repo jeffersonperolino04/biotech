@@ -839,11 +839,7 @@ function ContactSection() {
         </div>
 
         {/* RIGHT — FORM */}
-        <form
-          className="contact-form"
-          onSubmit={handleSubmit}
-          style={{ maxWidth: "520px" }}
-        >
+        <form className="contact-form" onSubmit={handleSubmit}>
           <div className="form-row">
             <div className="form-grp">
               <label className="form-lbl">Name</label>
