@@ -565,57 +565,100 @@ function IconGradCap() {
 }
 function IconDNA() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M2 15c6.667-6 13.333 0 20-6"/>
-      <path d="M2 9c6.667 6 13.333 0 20 6"/>
-      <line x1="7" y1="10.5" x2="7" y2="13.5"/>
-      <line x1="12" y1="9" x2="12" y2="15"/>
-      <line x1="17" y1="10.5" x2="17" y2="13.5"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M2 15c6.667-6 13.333 0 20-6" />
+      <path d="M2 9c6.667 6 13.333 0 20 6" />
+      <line x1="7" y1="10.5" x2="7" y2="13.5" />
+      <line x1="12" y1="9" x2="12" y2="15" />
+      <line x1="17" y1="10.5" x2="17" y2="13.5" />
     </svg>
   );
 }
 function IconMicroscope() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M6 18h8"/><path d="M3 22h18"/>
-      <path d="M14 22a7 7 0 1 0 0-14h-1"/>
-      <path d="M9 14h2"/>
-      <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z"/>
-      <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M6 18h8" />
+      <path d="M3 22h18" />
+      <path d="M14 22a7 7 0 1 0 0-14h-1" />
+      <path d="M9 14h2" />
+      <path d="M9 12a2 2 0 0 1-2-2V6h6v4a2 2 0 0 1-2 2Z" />
+      <path d="M12 6V3a1 1 0 0 0-1-1H9a1 1 0 0 0-1 1v3" />
     </svg>
   );
 }
 function IconLeaf() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z" />
+      <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
     </svg>
   );
 }
 function IconBeaker() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M4.5 3h15"/>
-      <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3"/>
-      <path d="M6 14h12"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M4.5 3h15" />
+      <path d="M6 3v16a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V3" />
+      <path d="M6 14h12" />
     </svg>
   );
 }
 function IconDroplets() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z"/>
-      <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z" />
+      <path d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97" />
     </svg>
   );
 }
 function IconLayers() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/>
-      <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/>
-      <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z" />
+      <path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65" />
+      <path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65" />
     </svg>
   );
 }
@@ -1122,19 +1165,23 @@ function MainContent({
         <div className="research-grid stagger">
           {[
             {
-              { icon: <IconDNA />, title: "Molecular Biology",
+              icon: <IconDNA />,
+              title: "Molecular Biology",
               desc: "DNA extraction using commercial kit-based protocols, agarose gel electrophoresis — gel preparation, loading, band imaging, and interpretation.",
             },
             {
-              { icon: <IconMicroscope />, title: "Microbiology & Culture",
+              icon: <IconMicroscope />,
+              title: "Microbiology & Culture",
               desc: "Aseptic technique, preparation of nutrient agar and LB broth, microbial isolation and streaking, Gram staining, and colony counting (pour and spread plate methods).",
             },
             {
-              { icon: <IconLeaf />, title: "Field & Environmental Biology",
+              icon: <IconLeaf />,
+              title: "Field & Environmental Biology",
               desc: "Mangrove ecosystem assessment, litter trap deployment, species inventory, soil property analysis, and biodiversity indices — Shannon-Wiener and Simpson's.",
             },
             {
-              { icon: <IconBeaker />, title: "Biosorption & Materials Science",
+              icon: <IconBeaker />,
+              title: "Biosorption & Materials Science",
               desc: "Investigating rice husk–alginate combinations as low-cost adsorptive agents for Congo Red dye removal — current undergraduate research under faculty supervision.",
             },
           ].map(({ icon, title, desc }) => (
@@ -1226,7 +1273,11 @@ function MainContent({
         </div>
         <div className="projects-grid stagger">
           <div className="proj-card">
-            <div className="proj-top"><div className="proj-icon"><IconDroplets /></div></div>
+            <div className="proj-top">
+              <div className="proj-icon">
+                <IconDroplets />
+              </div>
+            </div>
             <div className="proj-body">
               <div className="proj-tag">
                 Biotechnology · 2024–Present · Ongoing
@@ -1244,7 +1295,11 @@ function MainContent({
             </div>
           </div>
           <div className="proj-card">
-            <div className="proj-top"><div className="proj-icon"><IconLayers /></div></div>
+            <div className="proj-top">
+              <div className="proj-icon">
+                <IconLayers />
+              </div>
+            </div>
             <div className="proj-body">
               <div className="proj-tag">
                 Materials Science · 2023 · Capstone
