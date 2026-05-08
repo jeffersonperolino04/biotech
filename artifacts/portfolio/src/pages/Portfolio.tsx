@@ -9,7 +9,10 @@ function useTheme() {
   });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    document.documentElement.setAttribute(
+      "data-theme",
+      dark ? "dark" : "light",
+    );
     localStorage.setItem("portfolio-theme", dark ? "dark" : "light");
   }, [dark]);
 
@@ -19,24 +22,38 @@ function useTheme() {
 
 function SunIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="4"/>
-      <line x1="12" y1="2" x2="12" y2="4"/>
-      <line x1="12" y1="20" x2="12" y2="22"/>
-      <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/>
-      <line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
-      <line x1="2" y1="12" x2="4" y2="12"/>
-      <line x1="20" y1="12" x2="22" y2="12"/>
-      <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/>
-      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="12" r="4" />
+      <line x1="12" y1="2" x2="12" y2="4" />
+      <line x1="12" y1="20" x2="12" y2="22" />
+      <line x1="4.93" y1="4.93" x2="6.34" y2="6.34" />
+      <line x1="17.66" y1="17.66" x2="19.07" y2="19.07" />
+      <line x1="2" y1="12" x2="4" y2="12" />
+      <line x1="20" y1="12" x2="22" y2="12" />
+      <line x1="4.93" y1="19.07" x2="6.34" y2="17.66" />
+      <line x1="17.66" y1="6.34" x2="19.07" y2="4.93" />
     </svg>
   );
 }
 
 function MoonIcon() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
     </svg>
   );
 }
@@ -101,9 +118,11 @@ function useScrollReveal() {
           if (e.isIntersecting) e.target.classList.add("visible");
         });
       },
-      { threshold: 0.08 }
+      { threshold: 0.08 },
     );
-    document.querySelectorAll(".reveal, .stagger").forEach((el) => obs.observe(el));
+    document
+      .querySelectorAll(".reveal, .stagger")
+      .forEach((el) => obs.observe(el));
     return () => obs.disconnect();
   }, []);
 }
@@ -132,7 +151,7 @@ function useCounterAnimation() {
           }
         });
       },
-      { threshold: 0.35 }
+      { threshold: 0.35 },
     );
     const aboutSec = document.getElementById("about");
     if (aboutSec) obs.observe(aboutSec);
@@ -225,8 +244,15 @@ function ParticleCanvas() {
 function ProfilePhoto({ size = 92 }: { size?: number }) {
   return (
     <div className="profile-wrap" style={{ width: size, height: size }}>
-      <div className="profile-photo" style={{ width: size, height: size, fontSize: size * 0.3 }}>
-        <img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" />
+      <div
+        className="profile-photo"
+        style={{ width: size, height: size, fontSize: size * 0.3 }}
+      >
+        <img
+          src="/profile.jpg"
+          alt="Jefferson T. Perolino"
+          className="profile-photo-img"
+        />
       </div>
       <div className="profile-ring" />
       <div className="profile-ring-2" />
@@ -294,13 +320,27 @@ function Sidebar({
           href="mailto:jefferson.perolino@wvsu.edu.ph"
           title="Email"
         >
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <rect x="2" y="4" width="20" height="16" rx="2" />
             <path d="m22 7-10 7L2 7" />
           </svg>
         </a>
         <a className="social-btn" href="tel:+639816145783" title="Phone">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.9 19.79 19.79 0 0 1 1 3.22 2 2 0 0 1 2.98 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
           </svg>
         </a>
@@ -316,17 +356,29 @@ function Sidebar({
   );
 }
 
-function MobileHero({ onNavClick, typewriterText }: { onNavClick: (id: string) => void; typewriterText: string }) {
+function MobileHero({
+  onNavClick,
+  typewriterText,
+}: {
+  onNavClick: (id: string) => void;
+  typewriterText: string;
+}) {
   return (
     <div className="mobile-hero" id="mobile-hero">
       <div className="mobile-hero-profile-wrap">
         <div className="mobile-hero-photo">
-          <img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" />
+          <img
+            src="/profile.jpg"
+            alt="Jefferson T. Perolino"
+            className="profile-photo-img"
+          />
         </div>
       </div>
 
       <div className="mobile-hero-name">
-        Jefferson<br />T. Perolino
+        Jefferson
+        <br />
+        T. Perolino
       </div>
       <div className="mobile-hero-role">Biotechnologist · Researcher</div>
 
@@ -337,17 +389,30 @@ function MobileHero({ onNavClick, typewriterText }: { onNavClick: (id: string) =
 
       {typewriterText && (
         <div className="mobile-hero-typewriter">
-          {typewriterText}<span className="tw-cursor">|</span>
+          {typewriterText}
+          <span className="tw-cursor">|</span>
         </div>
       )}
 
       <p className="mobile-hero-desc">
-        A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at West Visayas State University — grounded in molecular techniques, driven by sustainable science.
+        A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at
+        West Visayas State University — grounded in molecular techniques, driven
+        by sustainable science.
       </p>
 
       <div className="mobile-hero-cta">
-        <button className="mh-btn-primary" onClick={() => onNavClick('contact')}>Get in touch</button>
-        <button className="mh-btn-secondary" onClick={() => onNavClick('projects')}>View research</button>
+        <button
+          className="mh-btn-primary"
+          onClick={() => onNavClick("contact")}
+        >
+          Get in touch
+        </button>
+        <button
+          className="mh-btn-secondary"
+          onClick={() => onNavClick("projects")}
+        >
+          View research
+        </button>
       </div>
     </div>
   );
@@ -370,7 +435,13 @@ function MobileStickyHeader({
     <div className={`mobile-sticky-header${visible ? " visible" : ""}`}>
       <div className="mobile-sticky-inner">
         <div className="mobile-sticky-left">
-          <div className="mobile-sticky-photo"><img src="/profile.jpg" alt="Jefferson T. Perolino" className="profile-photo-img" /></div>
+          <div className="mobile-sticky-photo">
+            <img
+              src="/profile.jpg"
+              alt="Jefferson T. Perolino"
+              className="profile-photo-img"
+            />
+          </div>
           <div className="mobile-sticky-name">Jefferson T. Perolino</div>
         </div>
         <nav className="mobile-sticky-nav">
@@ -398,68 +469,196 @@ function MobileStickyHeader({
 
 function IconLandmark() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/>
-      <polygon points="12 2 20 7 4 7"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <line x1="3" y1="22" x2="21" y2="22" />
+      <line x1="6" y1="18" x2="6" y2="11" />
+      <line x1="10" y1="18" x2="10" y2="11" />
+      <line x1="14" y1="18" x2="14" y2="11" />
+      <line x1="18" y1="18" x2="18" y2="11" />
+      <polygon points="12 2 20 7 4 7" />
     </svg>
   );
 }
 function IconMic() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="9" y="2" width="6" height="11" rx="3"/><path d="M19 10a7 7 0 0 1-14 0"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="8" y1="22" x2="16" y2="22"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <rect x="9" y="2" width="6" height="11" rx="3" />
+      <path d="M19 10a7 7 0 0 1-14 0" />
+      <line x1="12" y1="19" x2="12" y2="22" />
+      <line x1="8" y1="22" x2="16" y2="22" />
     </svg>
   );
 }
 function IconTent() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3.5 21 12 3l8.5 18"/><path d="M12 3 7 14h10L12 3z"/><line x1="3.5" y1="21" x2="20.5" y2="21"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M3.5 21 12 3l8.5 18" />
+      <path d="M12 3 7 14h10L12 3z" />
+      <line x1="3.5" y1="21" x2="20.5" y2="21" />
     </svg>
   );
 }
 function IconAward() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
     </svg>
   );
 }
 function IconStar() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>
   );
 }
 function IconGradCap() {
   return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+      <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
     </svg>
   );
 }
 
-type AwardItem = { year: string; title: string; org: string; icon: React.ReactNode };
+type AwardItem = {
+  year: string;
+  title: string;
+  org: string;
+  icon: React.ReactNode;
+};
 
 const ROW1_AWARDS: AwardItem[] = [
-  { year: "2023 – Present", title: "DOST-SEI Undergraduate Scholarship (RA 7687)", org: "Dept. of Science and Technology, Philippines", icon: <IconLandmark /> },
-  { year: "2025", title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review", org: "Guimaras State University, Mosqueda Conference Hall", icon: <IconMic /> },
-  { year: "2025", title: "Science Leadership Camp Delegate", org: "DOST-SEI Filipino Patriot Scholars Program", icon: <IconTent /> },
-  { year: "AY 2024–2025", title: "Parangal Silver Award — 2nd Year", org: "West Visayas State University", icon: <IconAward /> },
-  { year: "AY 2023–2024", title: "Parangal Silver Award — 1st Year", org: "West Visayas State University", icon: <IconAward /> },
-  { year: "AY 2022–2023", title: "With Highest Honors — 2nd Quarter", org: "Hinigaran National High School", icon: <IconStar /> },
-  { year: "AY 2020–2021", title: "With Highest Honors — Batch Salutatorian", org: "NONASHII, Hinigaran, Negros Occidental", icon: <IconGradCap /> },
+  {
+    year: "2023 – Present",
+    title: "DOST-SEI Undergraduate Scholarship (RA 7687)",
+    org: "Dept. of Science and Technology, Philippines",
+    icon: <IconLandmark />,
+  },
+  {
+    year: "2025",
+    title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review",
+    org: "Guimaras State University, Mosqueda Conference Hall",
+    icon: <IconMic />,
+  },
+  {
+    year: "2025",
+    title: "Science Leadership Camp Delegate",
+    org: "DOST-SEI Filipino Patriot Scholars Program",
+    icon: <IconTent />,
+  },
+  {
+    year: "AY 2024–2025",
+    title: "Parangal Silver Award — 2nd Year",
+    org: "West Visayas State University",
+    icon: <IconAward />,
+  },
+  {
+    year: "AY 2023–2024",
+    title: "Parangal Silver Award — 1st Year",
+    org: "West Visayas State University",
+    icon: <IconAward />,
+  },
+  {
+    year: "AY 2022–2023",
+    title: "With Highest Honors — 2nd Quarter",
+    org: "Hinigaran National High School",
+    icon: <IconStar />,
+  },
+  {
+    year: "AY 2020–2021",
+    title: "With Highest Honors — Batch Salutatorian",
+    org: "NONASHII, Hinigaran, Negros Occidental",
+    icon: <IconGradCap />,
+  },
 ];
 
 const ROW2_AWARDS: AwardItem[] = [
-  { year: "AY 2020–2021", title: "With Highest Honors — Batch Salutatorian", org: "NONASHII, Hinigaran, Negros Occidental", icon: <IconGradCap /> },
-  { year: "AY 2023–2024", title: "Parangal Silver Award — 1st Year", org: "West Visayas State University", icon: <IconAward /> },
-  { year: "2023 – Present", title: "DOST-SEI Undergraduate Scholarship (RA 7687)", org: "Dept. of Science and Technology, Philippines", icon: <IconLandmark /> },
-  { year: "AY 2022–2023", title: "With Highest Honors — 2nd Quarter", org: "Hinigaran National High School", icon: <IconStar /> },
-  { year: "2025", title: "Science Leadership Camp Delegate", org: "DOST-SEI Filipino Patriot Scholars Program", icon: <IconTent /> },
-  { year: "AY 2024–2025", title: "Parangal Silver Award — 2nd Year", org: "West Visayas State University", icon: <IconAward /> },
-  { year: "2025", title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review", org: "Guimaras State University, Mosqueda Conference Hall", icon: <IconMic /> },
+  {
+    year: "AY 2020–2021",
+    title: "With Highest Honors — Batch Salutatorian",
+    org: "NONASHII, Hinigaran, Negros Occidental",
+    icon: <IconGradCap />,
+  },
+  {
+    year: "AY 2023–2024",
+    title: "Parangal Silver Award — 1st Year",
+    org: "West Visayas State University",
+    icon: <IconAward />,
+  },
+  {
+    year: "2023 – Present",
+    title: "DOST-SEI Undergraduate Scholarship (RA 7687)",
+    org: "Dept. of Science and Technology, Philippines",
+    icon: <IconLandmark />,
+  },
+  {
+    year: "AY 2022–2023",
+    title: "With Highest Honors — 2nd Quarter",
+    org: "Hinigaran National High School",
+    icon: <IconStar />,
+  },
+  {
+    year: "2025",
+    title: "Science Leadership Camp Delegate",
+    org: "DOST-SEI Filipino Patriot Scholars Program",
+    icon: <IconTent />,
+  },
+  {
+    year: "AY 2024–2025",
+    title: "Parangal Silver Award — 2nd Year",
+    org: "West Visayas State University",
+    icon: <IconAward />,
+  },
+  {
+    year: "2025",
+    title: "Resource Speaker — DOST-SEI Scholarship Orientation & Review",
+    org: "Guimaras State University, Mosqueda Conference Hall",
+    icon: <IconMic />,
+  },
 ];
 
 function AwardCard({ item }: { item: AwardItem }) {
@@ -503,8 +702,15 @@ function AwardsMarquee() {
 const FORMSPREE_URL = "https://formspree.io/f/mnjwvwry";
 
 function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
+    "idle",
+  );
   const [copied, setCopied] = useState(false);
 
   const EMAIL = "jeffersonperolino04@gmail.com";
@@ -516,7 +722,9 @@ function ContactSection() {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
@@ -526,7 +734,10 @@ function ContactSection() {
     try {
       const res = await fetch(FORMSPREE_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify(form),
       });
       if (res.ok) {
@@ -550,20 +761,39 @@ function ContactSection() {
         {/* LEFT */}
         <div className="contact-info">
           <p className="contact-info-head">
-            Have a project in mind? Let's talk. I respond to all messages within 24 hours.
+            Have a project in mind? Let's talk. I respond to all messages within
+            24 hours.
           </p>
 
           <div className="contact-detail">
             <div className="contact-lbl">Email</div>
             <div className="contact-email-row">
               <span className="contact-val">{EMAIL}</span>
-              <button className="copy-btn" onClick={handleCopy} title="Copy email">
+              <button
+                className="copy-btn"
+                onClick={handleCopy}
+                title="Copy email"
+              >
                 {copied ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <polyline points="20 6 9 17 4 12" />
                   </svg>
                 ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
                   </svg>
@@ -592,7 +822,14 @@ function ContactSection() {
                 href={`mailto:${EMAIL}`}
                 title="Gmail"
               >
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
                   <rect x="2" y="4" width="20" height="16" rx="2" />
                   <path d="m22 7-10 7L2 7" />
                 </svg>
@@ -602,7 +839,11 @@ function ContactSection() {
         </div>
 
         {/* RIGHT — FORM */}
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form
+          className="contact-form"
+          onSubmit={handleSubmit}
+          style={{ maxWidth: "520px" }}
+        >
           <div className="form-row">
             <div className="form-grp">
               <label className="form-lbl">Name</label>
@@ -658,13 +899,21 @@ function ContactSection() {
           </div>
 
           {status === "sent" && (
-            <p className="form-success">Message sent! I'll get back to you soon.</p>
+            <p className="form-success">
+              Message sent! I'll get back to you soon.
+            </p>
           )}
           {status === "error" && (
-            <p className="form-error">Something went wrong. Please try again.</p>
+            <p className="form-error">
+              Something went wrong. Please try again.
+            </p>
           )}
 
-          <button className="btn-primary" type="submit" disabled={status === "sending"}>
+          <button
+            className="btn-primary"
+            type="submit"
+            disabled={status === "sending"}
+          >
             {status === "sending" ? "Sending…" : "Send Message"}
           </button>
         </form>
@@ -686,7 +935,12 @@ function MainContent({
     <>
       {/* HERO */}
       <section className="hero">
-        <svg className="hero-deco" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="hero-deco"
+          viewBox="0 0 240 200"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <circle cx="120" cy="100" r="70" stroke="#2e8060" strokeWidth="1.5" />
           <circle cx="120" cy="100" r="50" stroke="#2e8060" strokeWidth="1" />
           <circle cx="120" cy="100" r="30" stroke="#2e8060" strokeWidth="0.7" />
@@ -696,25 +950,73 @@ function MainContent({
           <circle cx="120" cy="170" r="6" fill="#2e8060" />
           <circle cx="55" cy="135" r="4" fill="#2e8060" />
           <circle cx="55" cy="65" r="4" fill="#2e8060" />
-          <line x1="120" y1="30" x2="185" y2="65" stroke="#2e8060" strokeWidth="0.8" />
-          <line x1="185" y1="65" x2="185" y2="135" stroke="#2e8060" strokeWidth="0.8" />
-          <line x1="185" y1="135" x2="120" y2="170" stroke="#2e8060" strokeWidth="0.8" />
-          <line x1="120" y1="170" x2="55" y2="135" stroke="#2e8060" strokeWidth="0.8" />
-          <line x1="55" y1="135" x2="55" y2="65" stroke="#2e8060" strokeWidth="0.8" />
-          <line x1="55" y1="65" x2="120" y2="30" stroke="#2e8060" strokeWidth="0.8" />
+          <line
+            x1="120"
+            y1="30"
+            x2="185"
+            y2="65"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
+          <line
+            x1="185"
+            y1="65"
+            x2="185"
+            y2="135"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
+          <line
+            x1="185"
+            y1="135"
+            x2="120"
+            y2="170"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
+          <line
+            x1="120"
+            y1="170"
+            x2="55"
+            y2="135"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
+          <line
+            x1="55"
+            y1="135"
+            x2="55"
+            y2="65"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
+          <line
+            x1="55"
+            y1="65"
+            x2="120"
+            y2="30"
+            stroke="#2e8060"
+            strokeWidth="0.8"
+          />
         </svg>
         <div className="hero-headline">
           <span>{typewriterText}</span>
           <span className="tw-cursor" />
         </div>
         <p className="hero-sub">
-          A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at West Visayas State University — grounded in molecular techniques, driven by sustainable science, and committed to research that matters to Filipino communities.
+          A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at
+          West Visayas State University — grounded in molecular techniques,
+          driven by sustainable science, and committed to research that matters
+          to Filipino communities.
         </p>
         <div className="hero-ctas">
           <button className="btn-primary" onClick={() => onNavClick("contact")}>
             Get in touch
           </button>
-          <button className="btn-secondary" onClick={() => onNavClick("projects")}>
+          <button
+            className="btn-secondary"
+            onClick={() => onNavClick("projects")}
+          >
             View research
           </button>
         </div>
@@ -728,10 +1030,19 @@ function MainContent({
         </div>
         <div className="about-body">
           <p>
-            I'm Jefferson T. Perolino, a third-year BS Biology student majoring in Biotechnology at West Visayas State University, Iloilo City. A DOST-SEI Scholar under RA 7687, I carry this recognition not as a credential alone but as a daily reminder that scientific work here has people counting on it.
+            I'm Jefferson T. Perolino, a third-year BS Biology student majoring
+            in Biotechnology at West Visayas State University, Iloilo City. A
+            DOST-SEI Scholar under RA 7687, I carry this recognition not as a
+            credential alone but as a daily reminder that scientific work here
+            has people counting on it.
           </p>
           <p>
-            My laboratory practice spans molecular biology, microbiology, and field ecology — with a growing focus on biosorption and the use of agricultural waste as functional materials. I believe reproducible, careful science is the foundation of everything meaningful; that methodical work in a modest university lab can still speak to a bigger world.
+            My laboratory practice spans molecular biology, microbiology, and
+            field ecology — with a growing focus on biosorption and the use of
+            agricultural waste as functional materials. I believe reproducible,
+            careful science is the foundation of everything meaningful; that
+            methodical work in a modest university lab can still speak to a
+            bigger world.
           </p>
         </div>
         <div className="stats-strip">
@@ -742,7 +1053,9 @@ function MainContent({
             { target: 6, label: "Trainings & Seminars" },
           ].map(({ target, label }) => (
             <div key={label} className="stat">
-              <span className="stat-num" data-target={target}>0</span>
+              <span className="stat-num" data-target={target}>
+                0
+              </span>
               <div className="stat-lbl">{label}</div>
             </div>
           ))}
@@ -797,30 +1110,60 @@ function MainContent({
           {[
             {
               cat: "Molecular",
-              pills: ["DNA Extraction", "Gel Electrophoresis", "Band Analysis", "Gel Imaging"],
+              pills: [
+                "DNA Extraction",
+                "Gel Electrophoresis",
+                "Band Analysis",
+                "Gel Imaging",
+              ],
             },
             {
               cat: "Microbiology",
-              pills: ["Aseptic Technique", "Culture Media Prep", "Microbial Isolation", "Gram Staining", "Serial Dilution", "Colony Counting"],
+              pills: [
+                "Aseptic Technique",
+                "Culture Media Prep",
+                "Microbial Isolation",
+                "Gram Staining",
+                "Serial Dilution",
+                "Colony Counting",
+              ],
             },
             {
               cat: "Field Biology",
-              pills: ["Ecosystem Assessment", "Litter Trap Deployment", "Species Inventory", "Shannon-Wiener Index", "Simpson's Index"],
+              pills: [
+                "Ecosystem Assessment",
+                "Litter Trap Deployment",
+                "Species Inventory",
+                "Shannon-Wiener Index",
+                "Simpson's Index",
+              ],
             },
             {
               cat: "General Lab",
-              pills: ["Micropipetting", "Solution Preparation", "Lab Safety & Waste Disposal", "Scientific Report Writing"],
+              pills: [
+                "Micropipetting",
+                "Solution Preparation",
+                "Lab Safety & Waste Disposal",
+                "Scientific Report Writing",
+              ],
             },
             {
               cat: "Soft Skills",
-              pills: ["Research Leadership", "Data Interpretation", "Science Communication", "Team Coordination"],
+              pills: [
+                "Research Leadership",
+                "Data Interpretation",
+                "Science Communication",
+                "Team Coordination",
+              ],
             },
           ].map(({ cat, pills }) => (
             <div key={cat} className="skill-row">
               <div className="skill-cat">{cat}</div>
               <div className="pills">
                 {pills.map((p) => (
-                  <span key={p} className="pill">{p}</span>
+                  <span key={p} className="pill">
+                    {p}
+                  </span>
                 ))}
               </div>
             </div>
@@ -836,23 +1179,41 @@ function MainContent({
         </div>
         <div className="projects-grid stagger">
           <div className="proj-card">
-            <div className="proj-top"><span>🧪</span></div>
+            <div className="proj-top">
+              <span>🧪</span>
+            </div>
             <div className="proj-body">
-              <div className="proj-tag">Biotechnology · 2024–Present · Ongoing</div>
-              <div className="proj-title">Rice Husk & Alginate Combination as Adsorptive Agents of Congo Red</div>
+              <div className="proj-tag">
+                Biotechnology · 2024–Present · Ongoing
+              </div>
+              <div className="proj-title">
+                Rice Husk & Alginate Combination as Adsorptive Agents of Congo
+                Red
+              </div>
               <div className="proj-desc">
-                Investigating biomass-based materials for synthetic dye removal from wastewater — contributing toward sustainable, cost-effective treatment solutions for the Philippines.
+                Investigating biomass-based materials for synthetic dye removal
+                from wastewater — contributing toward sustainable,
+                cost-effective treatment solutions for the Philippines.
               </div>
               <span className="proj-link">View Details →</span>
             </div>
           </div>
           <div className="proj-card">
-            <div className="proj-top"><span>🌴</span></div>
+            <div className="proj-top">
+              <span>🌴</span>
+            </div>
             <div className="proj-body">
-              <div className="proj-tag">Materials Science · 2023 · Capstone</div>
-              <div className="proj-title">Coconut Husk & Mahogany Shell as Raw Materials for Fiberboard Production</div>
+              <div className="proj-tag">
+                Materials Science · 2023 · Capstone
+              </div>
+              <div className="proj-title">
+                Coconut Husk & Mahogany Shell as Raw Materials for Fiberboard
+                Production
+              </div>
               <div className="proj-desc">
-                Led a capstone study evaluating agricultural waste as viable raw materials for eco-friendly fiberboard — overseeing design, data collection, and manuscript preparation as group leader.
+                Led a capstone study evaluating agricultural waste as viable raw
+                materials for eco-friendly fiberboard — overseeing design, data
+                collection, and manuscript preparation as group leader.
               </div>
               <span className="proj-link">View Details →</span>
             </div>
@@ -893,22 +1254,32 @@ export default function Portfolio() {
     return () => window.removeEventListener("resize", checkMobile);
   }, [checkMobile]);
 
-  const scrollToSection = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    if (isMobile) {
-      const offset = 64;
-      const top = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top, behavior: "smooth" });
-    } else {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  }, [isMobile]);
+  const scrollToSection = useCallback(
+    (id: string) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      if (isMobile) {
+        const offset = 64;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    },
+    [isMobile],
+  );
 
   useEffect(() => {
     const handleScroll = () => {
       if (!isMobile) {
-        const sectionIds = ["about", "research", "skills", "projects", "awards", "contact"];
+        const sectionIds = [
+          "about",
+          "research",
+          "skills",
+          "projects",
+          "awards",
+          "contact",
+        ];
         let active = "about";
         sectionIds.forEach((id) => {
           const s = document.getElementById(id);
@@ -924,7 +1295,14 @@ export default function Portfolio() {
         setStickyVisible(heroBottom <= 0);
       }
 
-      const sectionIds = ["about", "research", "skills", "projects", "awards", "contact"];
+      const sectionIds = [
+        "about",
+        "research",
+        "skills",
+        "projects",
+        "awards",
+        "contact",
+      ];
       let active = "about";
       sectionIds.forEach((id) => {
         const s = document.getElementById(id);
@@ -962,7 +1340,12 @@ export default function Portfolio() {
         )}
 
         <main className="main">
-          {isMobile && <MobileHero onNavClick={scrollToSection} typewriterText={typewriterText} />}
+          {isMobile && (
+            <MobileHero
+              onNavClick={scrollToSection}
+              typewriterText={typewriterText}
+            />
+          )}
           <div className={isMobile ? "mobile-main-content" : ""}>
             <MainContent
               activeSection={activeSection}
