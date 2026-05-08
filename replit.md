@@ -1,45 +1,50 @@
-# [Project name]
+# Jefferson T. Perolino — Portfolio
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A personal academic portfolio for Jefferson T. Perolino, a BS Biology (Biotechnology) student and DOST-SEI Scholar at West Visayas State University.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/portfolio run dev` — run the portfolio (port 21113, served at `/`)
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 8080, served at `/api`)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Frontend: React + Vite, plain CSS (no Tailwind utility classes — custom CSS vars)
+- Fonts: Cormorant Garamond (serif/display) + DM Sans (body)
+- API: Express 5 (for future use)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- Portfolio page: `artifacts/portfolio/src/pages/Portfolio.tsx`
+- All styles: `artifacts/portfolio/src/index.css`
+- App entry: `artifacts/portfolio/src/App.tsx`
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Desktop: `position: fixed` sidebar (272px) with its own `overflow-y: auto` scroll, main content uses `margin-left: 272px`
+- Mobile: Full-screen hero section (100svh) on load → compact sticky header fades in with `opacity` + `translateY` transition (0.6s cubic-bezier) once user scrolls past the hero
+- Responsive breakpoint at 860px — sidebar hidden on mobile, mobile hero shown instead
+- All sizing uses `clamp()` with `vw` units for fluid responsiveness on any phone screen
+- Particle canvas, typewriter, scroll-reveal, and counter animations are all pure JS (no library dependency)
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Static portfolio site: hero/typewriter, about + stats counters, research areas grid, lab skills pills, projects grid, awards timeline, contact form
+- Desktop: fixed sidebar profile panel + scrollable main content
+- Mobile: full-screen hero intro → smooth fade+slide sticky header on scroll, all sections accessible below
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Desktop sidebar: fixed/static left panel with its own scrollbar
+- Mobile: full-screen hero with photo, description, nav links → elegant fade+slide-down sticky header on scroll past hero
+- Responsive using relative/clamp units
+- No abrupt transitions — everything slow and smooth
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
-
-## Pointers
-
-- See the `pnpm-workspace` skill for workspace structure, TypeScript setup, and package details
+- The `index.css` uses raw CSS custom properties (`--primary`, `--accent`, etc.) from the original design — not Tailwind tokens
+- Mobile sticky header uses `pointer-events: none` when hidden so it doesn't intercept touches
+- `100svh` used for mobile hero to avoid address-bar jumping on iOS

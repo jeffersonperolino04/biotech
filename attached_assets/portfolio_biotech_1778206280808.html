@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jefferson T. Perolino — Biotechnologist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+  --bg:           #f2f7f4;
+  --sidebar-bg:   #ebf2ee;
+  --white:        #ffffff;
+  --primary:      #1b3a2d;
+  --accent:       #2e8060;
+  --accent-soft:  #4aab82;
+  --text:         #192e23;
+  --text-mid:     #4a6e5a;
+  --text-faint:   #89aba0;
+  --border:       rgba(27,58,45,0.10);
+  --border-light: rgba(27,58,45,0.055);
+  --shadow-sm:    0 2px 10px rgba(27,58,45,0.06);
+  --shadow-md:    0 6px 28px rgba(27,58,45,0.11);
+  --shadow-lg:    0 14px 48px rgba(27,58,45,0.14);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── MOLECULAR HEX BACKGROUND ─────────────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='56' height='48' viewBox='0 0 56 48' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M28 2L54 16v16L28 46 2 32V16L28 2z' stroke='%232e8060' stroke-opacity='0.055' stroke-width='0.8' fill='none'/%3E%3C/svg%3E");
+  background-size: 56px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── LAYOUT ────────────────────────────────────────────── */
+.layout {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── SIDEBAR ───────────────────────────────────────────── */
+.sidebar {
+  width: 272px;
+  min-width: 272px;
+  height: 100vh;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 44px 26px 36px;
+  position: relative;
+}
+
+.sidebar::-webkit-scrollbar { width: 3px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* ─── PROFILE PHOTO ─────────────────────────────────────── */
+.profile-wrap {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin-bottom: 18px;
+}
+
+.profile-photo {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #c6ddd2 0%, #9dc4b2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--primary);
+  border: 2px solid rgba(46,128,96,0.25);
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* spinning accent ring */
+.profile-ring {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  border-top-color: var(--accent-soft);
+  border-right-color: rgba(74,171,130,0.35);
+  animation: spin-ring 9s linear infinite;
+}
+
+.profile-ring-2 {
+  position: absolute;
+  inset: -9px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(74,171,130,0.2);
+  border-left-color: rgba(74,171,130,0.12);
+  animation: spin-ring 14s linear infinite reverse;
+}
+
+@keyframes spin-ring {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── SIDEBAR TEXT ──────────────────────────────────────── */
+.profile-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 25px;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.profile-role {
+  font-size: 9.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.profile-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-bottom: 16px;
+}
+
+.profile-location svg {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+}
+
+.availability-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(46,128,96,0.09);
+  border: 1px solid rgba(46,128,96,0.22);
+  color: #1a6646;
+  font-size: 10.5px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.avail-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  animation: pulse-dot 2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse-dot {
+  0%,100% { opacity:1; transform:scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+  50%      { opacity:0.8; transform:scale(1.2); box-shadow: 0 0 0 4px rgba(34,197,94,0); }
+}
+
+/* ─── NAV ───────────────────────────────────────────────── */
+nav {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.nav-item {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 7px 0 7px 12px;
+  border-left: 2px solid transparent;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, padding-left 0.25s ease, background 0.2s ease;
+  user-select: none;
+  margin-bottom: 1px;
+}
+
+.nav-item:hover {
+  color: var(--primary);
+  background: rgba(46,128,96,0.04);
+  padding-left: 15px;
+}
+
+.nav-item.active {
+  color: var(--primary);
+  font-weight: 500;
+  border-left-color: var(--accent);
+  padding-left: 16px;
+  background: rgba(46,128,96,0.06);
+}
+
+/* ─── SOCIAL ────────────────────────────────────────────── */
+.social-row {
+  display: flex;
+  gap: 9px;
+  margin-top: auto;
+  padding-top: 28px;
+  width: 100%;
+  border-top: 1px solid var(--border-light);
+}
+
+/* push social row to the bottom if nav is short */
+.sidebar-spacer { flex: 1; min-height: 24px; }
+
+.social-btn {
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.social-btn:hover {
+  color: var(--accent);
+  border-color: rgba(46,128,96,0.4);
+  background: rgba(46,128,96,0.05);
+  transform: translateY(-1px);
+}
+
+.social-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ─── MAIN ──────────────────────────────────────────────── */
+.main {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 64px 76px 80px;
+  position: relative;
+}
+
+.main::-webkit-scrollbar { width: 4px; }
+.main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+/* ─── HERO ──────────────────────────────────────────────── */
+.hero {
+  margin-bottom: 80px;
+  position: relative;
+}
+
+/* decorative molecular SVG in top-right of hero */
+.hero-deco {
+  position: absolute;
+  top: -20px;
+  right: -40px;
+  width: 240px;
+  height: 200px;
+  pointer-events: none;
+  opacity: 0.07;
+}
+
+.hero-headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1.05;
+  margin-bottom: 22px;
+  min-height: 68px;
+}
+
+.tw-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.82em;
+  background: var(--accent);
+  vertical-align: middle;
+  margin-left: 3px;
+  border-radius: 1px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; }
+  50%      { opacity:0; }
+}
+
+.hero-sub {
+  font-size: 15px;
+  line-height: 1.78;
+  color: var(--text-mid);
+  max-width: 500px;
+  margin-bottom: 30px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 11px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.22s, transform 0.15s, box-shadow 0.22s;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 18px rgba(46,128,96,0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.22s, color 0.22s, transform 0.15s;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1.5px);
+}
+
+/* ─── SECTIONS ──────────────────────────────────────────── */
+.section {
+  margin-bottom: 76px;
+}
+
+.sec-head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 34px;
+}
+
+.sec-label {
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.sec-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ─── ABOUT ─────────────────────────────────────────────── */
+.about-body p {
+  font-size: 15px;
+  line-height: 1.82;
+  color: var(--text);
+  max-width: 620px;
+  margin-bottom: 18px;
+}
+
+.about-body p:last-of-type { margin-bottom: 0; }
+
+/* stats strip */
+.stats-strip {
+  display: flex;
+  gap: 0;
+  margin-top: 38px;
+  padding-top: 30px;
+  border-top: 1px solid var(--border-light);
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 0 16px;
+  border-right: 1px solid var(--border-light);
+}
+
+.stat:last-child { border-right: none; }
+.stat:first-child { padding-left: 0; }
+
+.stat-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  font-weight: 600;
+  color: var(--primary);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.stat-suffix {
+  font-size: 20px;
+  vertical-align: super;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.stat-lbl {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: 5px;
+  letter-spacing: 0.04em;
+}
+
+/* ─── RESEARCH AREAS ────────────────────────────────────── */
+.research-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.r-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 26px 24px;
+  transition: box-shadow 0.28s ease, transform 0.22s ease, border-color 0.25s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+.r-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-soft) 100%);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.r-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+  border-color: rgba(46,128,96,0.18);
+}
+
+.r-card:hover::after { opacity: 1; }
+
+.r-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(46,128,96,0.08);
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  margin-bottom: 15px;
+  transition: background 0.22s, transform 0.22s;
+}
+
+.r-card:hover .r-icon {
+  background: rgba(46,128,96,0.14);
+  transform: scale(1.06);
+}
+
+.r-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 7px;
+}
+
+.r-desc {
+  font-size: 13px;
+  color: var(--text-mid);
+  line-height: 1.65;
+}
+
+/* ─── SKILLS ────────────────────────────────────────────── */
+.skills-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skill-row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.skill-cat {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  width: 88px;
+  min-width: 88px;
+  padding-top: 5px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pill {
+  font-size: 12.5px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 4px 14px;
+  background: var(--white);
+  transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s, box-shadow 0.2s;
+  cursor: default;
+}
+
+.pill:hover {
+  background: rgba(46,128,96,0.06);
+  border-color: rgba(46,128,96,0.35);
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(46,128,96,0.1);
+}
+
+/* ─── PROJECTS ──────────────────────────────────────────── */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.proj-card {
+  background: var(--white);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: box-shadow 0.28s ease, transform 0.22s ease;
+  cursor: default;
+}
+
+.proj-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.proj-top {
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Unique top colors per card */
+.proj-card:nth-child(1) .proj-top { background: linear-gradient(135deg,#d4ede3,#b8dcc9); }
+.proj-card:nth-child(2) .proj-top { background: linear-gradient(135deg,#cce4f5,#b0d3ed); }
+.proj-card:nth-child(3) .proj-top { background: linear-gradient(135deg,#e8e0f5,#d5c9ef); }
+.proj-card:nth-child(4) .proj-top { background: linear-gradient(135deg,#f5ead8,#edd9be); }
+
+/* subtle animated shimmer on card top */
+.proj-top::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,0.25) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+
+.proj-card:hover .proj-top::before {
+  transform: translateX(100%);
+}
+
+.proj-body {
+  padding: 18px 20px 20px;
+}
+
+.proj-tag {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+
+.proj-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.45;
+  margin-bottom: 7px;
+}
+
+.proj-desc {
+  font-size: 12.5px;
+  color: var(--text-mid);
+  line-height: 1.62;
+  margin-bottom: 12px;
+}
+
+.proj-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12.5px;
+  color: var(--accent);
+  cursor: default;
+  transition: gap 0.2s;
+}
+
+.proj-card:hover .proj-link { gap: 9px; }
+
+/* ─── AWARDS ────────────────────────────────────────────── */
+.awards-list { display: flex; flex-direction: column; }
+
+.award-row {
+  display: flex;
+  gap: 22px;
+  padding: 19px 0;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.18s;
+}
+
+.award-row:last-child { border-bottom: none; }
+
+.award-year {
+  font-size: 11px;
+  color: var(--text-faint);
+  min-width: 62px;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+
+.award-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(46,128,96,0.35);
+  margin-top: 6px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.award-row:hover .award-dot {
+  background: var(--accent-soft);
+}
+
+.award-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--primary);
+  margin-bottom: 3px;
+}
+
+.award-org {
+  font-size: 12.5px;
+  color: var(--text-mid);
+}
+
+/* ─── CONTACT ───────────────────────────────────────────── */
+.contact-wrap {
+  display: flex;
+  gap: 52px;
+  align-items: flex-start;
+}
+
+.contact-info { flex: 0 0 220px; }
+
+.contact-info-head {
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.72;
+  margin-bottom: 26px;
+}
+
+.contact-detail { margin-bottom: 16px; }
+
+.contact-lbl {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 3px;
+}
+
+.contact-val {
+  font-size: 13px;
+  color: var(--text);
+  word-break: break-all;
+}
+
+.contact-form { flex: 1; }
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-grp {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-lbl {
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+.form-input, .form-ta {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-input:focus, .form-ta:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(46,128,96,0.08);
+}
+
+.form-ta { height: 108px; resize: none; }
+
+/* ─── FOOTER ────────────────────────────────────────────── */
+.footer {
+  margin-top: 52px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light);
+  font-size: 12px;
+  color: var(--text-faint);
+  line-height: 1.8;
+}
+
+/* ─── SCROLL REVEAL ─────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* staggered children inside a revealed section */
+.stagger > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger.visible > *:nth-child(1) { transition-delay: 0.05s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(2) { transition-delay: 0.12s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(3) { transition-delay: 0.19s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(4) { transition-delay: 0.26s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(5) { transition-delay: 0.33s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(6) { transition-delay: 0.40s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(7) { transition-delay: 0.47s; opacity:1; transform:none; }
+.stagger.visible > *:nth-child(8) { transition-delay: 0.54s; opacity:1; transform:none; }
+
+/* ─── PARTICLE CANVAS ───────────────────────────────────── */
+#particle-canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── RESPONSIVE ────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .layout { flex-direction: column; height: auto; overflow: visible; }
+  .sidebar { width: 100%; height: auto; flex-direction: row; flex-wrap: wrap; }
+  .main { padding: 36px 24px; overflow: visible; }
+  .research-grid, .projects-grid { grid-template-columns: 1fr; }
+  body { overflow: auto; }
+  #particle-canvas { display: none; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="particle-canvas"></canvas>
+
+<div class="layout">
+
+  <!-- ══════════ SIDEBAR ══════════ -->
+  <aside class="sidebar">
+
+    <div class="profile-wrap">
+      <div class="profile-photo">JP</div>
+      <div class="profile-ring"></div>
+      <div class="profile-ring-2"></div>
+    </div>
+
+    <div class="profile-name">Jefferson<br>T. Perolino</div>
+    <div class="profile-role">Biotechnologist · Researcher</div>
+
+    <div class="profile-location">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Iloilo City, Philippines
+    </div>
+
+    <div class="availability-badge">
+      <span class="avail-dot"></span>
+      Open to Research Opportunities
+    </div>
+
+    <nav>
+      <a class="nav-item active" onclick="goTo('about')">About</a>
+      <a class="nav-item" onclick="goTo('research')">Research Areas</a>
+      <a class="nav-item" onclick="goTo('skills')">Lab Skills</a>
+      <a class="nav-item" onclick="goTo('projects')">Projects</a>
+      <a class="nav-item" onclick="goTo('awards')">Awards</a>
+      <a class="nav-item" onclick="goTo('contact')">Contact</a>
+    </nav>
+
+    <div class="sidebar-spacer"></div>
+
+    <div class="social-row">
+      <!-- LinkedIn -->
+      <a class="social-btn" href="https://linkedin.com/in/jeffersonperolino" title="LinkedIn" target="_blank">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+      <!-- Email -->
+      <a class="social-btn" href="mailto:jefferson.perolino@wvsu.edu.ph" title="Email">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>
+      </a>
+      <!-- Phone -->
+      <a class="social-btn" href="tel:+639816145783" title="Phone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.07 11.9 19.79 19.79 0 0 1 1 3.22 2 2 0 0 1 2.98 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+    </div>
+
+  </aside>
+
+  <!-- ══════════ MAIN ══════════ -->
+  <main class="main" id="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <!-- decorative molecular SVG -->
+      <svg class="hero-deco" viewBox="0 0 240 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="120" cy="100" r="70" stroke="#2e8060" stroke-width="1.5"/>
+        <circle cx="120" cy="100" r="50" stroke="#2e8060" stroke-width="1"/>
+        <circle cx="120" cy="100" r="30" stroke="#2e8060" stroke-width="0.7"/>
+        <circle cx="120" cy="30"  r="6" fill="#2e8060"/>
+        <circle cx="185" cy="65"  r="4" fill="#2e8060"/>
+        <circle cx="185" cy="135" r="4" fill="#2e8060"/>
+        <circle cx="120" cy="170" r="6" fill="#2e8060"/>
+        <circle cx="55"  cy="135" r="4" fill="#2e8060"/>
+        <circle cx="55"  cy="65"  r="4" fill="#2e8060"/>
+        <line x1="120" y1="30"  x2="185" y2="65"  stroke="#2e8060" stroke-width="0.8"/>
+        <line x1="185" y1="65"  x2="185" y2="135" stroke="#2e8060" stroke-width="0.8"/>
+        <line x1="185" y1="135" x2="120" y2="170" stroke="#2e8060" stroke-width="0.8"/>
+        <line x1="120" y1="170" x2="55"  y2="135" stroke="#2e8060" stroke-width="0.8"/>
+        <line x1="55"  y1="135" x2="55"  y2="65"  stroke="#2e8060" stroke-width="0.8"/>
+        <line x1="55"  y1="65"  x2="120" y2="30"  stroke="#2e8060" stroke-width="0.8"/>
+      </svg>
+
+      <div class="hero-headline">
+        <span id="tw"></span><span class="tw-cursor"></span>
+      </div>
+
+      <p class="hero-sub">
+        A DOST-SEI Scholar and BS Biology student majoring in Biotechnology at West Visayas State University — grounded in molecular techniques, driven by sustainable science, and committed to research that matters to Filipino communities.
+      </p>
+
+      <div class="hero-ctas">
+        <a class="btn-primary" onclick="goTo('contact')">Get in touch</a>
+        <a class="btn-secondary" onclick="goTo('projects')">View research</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section reveal" id="about">
+      <div class="sec-head">
+        <span class="sec-label">About</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="about-body">
+        <p>I'm Jefferson T. Perolino, a third-year BS Biology student majoring in Biotechnology at West Visayas State University, Iloilo City. A DOST-SEI Scholar under RA 7687, I carry this recognition not as a credential alone but as a daily reminder that scientific work here has people counting on it.</p>
+        <p>My laboratory practice spans molecular biology, microbiology, and field ecology — with a growing focus on biosorption and the use of agricultural waste as functional materials. I believe reproducible, careful science is the foundation of everything meaningful; that methodical work in a modest university lab can still speak to a bigger world.</p>
+      </div>
+      <div class="stats-strip">
+        <div class="stat">
+          <span class="stat-num" data-target="3">0</span>
+          <div class="stat-lbl">Years at WVSU</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="2">0</span>
+          <div class="stat-lbl">Research Projects</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="2">0</span>
+          <div class="stat-lbl">Silver Awards</div>
+        </div>
+        <div class="stat">
+          <span class="stat-num" data-target="6">0</span>
+          <div class="stat-lbl">Trainings & Seminars</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH AREAS -->
+    <section class="section reveal" id="research">
+      <div class="sec-head">
+        <span class="sec-label">Research Areas</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="research-grid stagger">
+        <div class="r-card">
+          <div class="r-icon">🧬</div>
+          <div class="r-title">Molecular Biology</div>
+          <div class="r-desc">DNA extraction using commercial kit-based protocols, agarose gel electrophoresis — gel preparation, loading, band imaging, and interpretation.</div>
+        </div>
+        <div class="r-card">
+          <div class="r-icon">🔬</div>
+          <div class="r-title">Microbiology & Culture</div>
+          <div class="r-desc">Aseptic technique, preparation of nutrient agar and LB broth, microbial isolation and streaking, Gram staining, and colony counting (pour and spread plate methods).</div>
+        </div>
+        <div class="r-card">
+          <div class="r-icon">🌿</div>
+          <div class="r-title">Field & Environmental Biology</div>
+          <div class="r-desc">Mangrove ecosystem assessment, litter trap deployment, species inventory, soil property analysis, and biodiversity indices — Shannon-Wiener and Simpson's.</div>
+        </div>
+        <div class="r-card">
+          <div class="r-icon">⚗️</div>
+          <div class="r-title">Biosorption & Materials Science</div>
+          <div class="r-desc">Investigating rice husk–alginate combinations as low-cost adsorptive agents for Congo Red dye removal — current undergraduate research under faculty supervision.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LAB SKILLS -->
+    <section class="section reveal" id="skills">
+      <div class="sec-head">
+        <span class="sec-label">Laboratory Skills & Tools</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="skills-wrap">
+        <div class="skill-row">
+          <div class="skill-cat">Molecular</div>
+          <div class="pills">
+            <span class="pill">DNA Extraction</span>
+            <span class="pill">Gel Electrophoresis</span>
+            <span class="pill">Band Analysis</span>
+            <span class="pill">Gel Imaging</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Microbiology</div>
+          <div class="pills">
+            <span class="pill">Aseptic Technique</span>
+            <span class="pill">Culture Media Prep</span>
+            <span class="pill">Microbial Isolation</span>
+            <span class="pill">Gram Staining</span>
+            <span class="pill">Serial Dilution</span>
+            <span class="pill">Colony Counting</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Field Biology</div>
+          <div class="pills">
+            <span class="pill">Ecosystem Assessment</span>
+            <span class="pill">Litter Trap Deployment</span>
+            <span class="pill">Species Inventory</span>
+            <span class="pill">Shannon-Wiener Index</span>
+            <span class="pill">Simpson's Index</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">General Lab</div>
+          <div class="pills">
+            <span class="pill">Micropipetting</span>
+            <span class="pill">Solution Preparation</span>
+            <span class="pill">Lab Safety & Waste Disposal</span>
+            <span class="pill">Scientific Report Writing</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <div class="skill-cat">Soft Skills</div>
+          <div class="pills">
+            <span class="pill">Research Leadership</span>
+            <span class="pill">Data Interpretation</span>
+            <span class="pill">Science Communication</span>
+            <span class="pill">Team Coordination</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section reveal" id="projects">
+      <div class="sec-head">
+        <span class="sec-label">Research Projects</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="projects-grid stagger">
+        <div class="proj-card">
+          <div class="proj-top"><span>🧪</span></div>
+          <div class="proj-body">
+            <div class="proj-tag">Biotechnology · 2024–Present · Ongoing</div>
+            <div class="proj-title">Rice Husk & Alginate Combination as Adsorptive Agents of Congo Red</div>
+            <div class="proj-desc">Investigating biomass-based materials for synthetic dye removal from wastewater — contributing toward sustainable, cost-effective treatment solutions for the Philippines.</div>
+            <span class="proj-link">View Details →</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-top"><span>🌴</span></div>
+          <div class="proj-body">
+            <div class="proj-tag">Materials Science · 2023 · Capstone</div>
+            <div class="proj-title">Coconut Husk & Mahogany Shell as Raw Materials for Fiberboard Production</div>
+            <div class="proj-desc">Led a capstone study evaluating agricultural waste as viable raw materials for eco-friendly fiberboard — overseeing design, data collection, and manuscript preparation as group leader.</div>
+            <span class="proj-link">View Details →</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS & RECOGNITION -->
+    <section class="section reveal" id="awards">
+      <div class="sec-head">
+        <span class="sec-label">Scholarships & Recognition</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="awards-list stagger">
+        <div class="award-row">
+          <div class="award-year">2023–Present</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">DOST-SEI Undergraduate Scholarship (RA 7687)</div>
+            <div class="award-org">Department of Science and Technology, Philippines</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">2025</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">Resource Speaker — DOST-SEI Scholarship Orientation & Review</div>
+            <div class="award-org">Guimaras State University, Mosqueda Conference Hall</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">2025</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">Science Leadership Camp Delegate</div>
+            <div class="award-org">DOST-SEI Filipino Patriot Scholars Program</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">AY 2024–2025</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">Parangal Silver Award — 2nd Year</div>
+            <div class="award-org">West Visayas State University</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">AY 2023–2024</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">Parangal Silver Award — 1st Year</div>
+            <div class="award-org">West Visayas State University</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">AY 2022–2023</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">With Highest Honors — 2nd Quarter</div>
+            <div class="award-org">Hinigaran National High School</div>
+          </div>
+        </div>
+        <div class="award-row">
+          <div class="award-year">AY 2020–2021</div>
+          <div class="award-dot"></div>
+          <div>
+            <div class="award-title">With Highest Honors — Batch Salutatorian</div>
+            <div class="award-org">NONASHII, Hinigaran, Negros Occidental</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section reveal" id="contact">
+      <div class="sec-head">
+        <span class="sec-label">Contact</span>
+        <div class="sec-line"></div>
+      </div>
+      <div class="contact-wrap">
+        <div class="contact-info">
+          <p class="contact-info-head">Interested in research collaboration or opportunities? I respond to all messages within 24 hours.</p>
+          <div class="contact-detail">
+            <div class="contact-lbl">Email</div>
+            <div class="contact-val">jefferson.perolino@wvsu.edu.ph</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-lbl">University</div>
+            <div class="contact-val">West Visayas State University, Iloilo City</div>
+          </div>
+          <div class="contact-detail">
+            <div class="contact-lbl">LinkedIn</div>
+            <div class="contact-val">linkedin.com/in/jeffersonperolino</div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <div class="form-row">
+            <div class="form-grp">
+              <label class="form-lbl">Name</label>
+              <input class="form-input" type="text" placeholder="Your name">
+            </div>
+            <div class="form-grp">
+              <label class="form-lbl">Email</label>
+              <input class="form-input" type="email" placeholder="your@email.com">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-grp" style="flex:1">
+              <label class="form-lbl">Subject</label>
+              <input class="form-input" type="text" placeholder="Research inquiry">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-grp" style="flex:1">
+              <label class="form-lbl">Message</label>
+              <textarea class="form-ta" placeholder="Tell me about your project or inquiry…"></textarea>
+            </div>
+          </div>
+          <button class="btn-primary">Send Message</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <p>© 2026 Jefferson T. Perolino · All rights reserved.</p>
+      <p>Biotechnology · Molecular Research · Environmental Science</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+/* ── TYPEWRITER ──────────────────────────────────────── */
+const phrases = [
+  "Biotechnologist/",
+  "Researcher/",
+  "DOST Scholar/",
+  "Lab-Ready/",
+  "Detail-Oriented/"
+];
+let pi = 0, ci = 0, del = false;
+const twEl = document.getElementById('tw');
+
+function type() {
+  const cur = phrases[pi];
+  twEl.textContent = del ? cur.slice(0, ci - 1) : cur.slice(0, ci + 1);
+  del ? ci-- : ci++;
+  let wait = del ? 55 : 95;
+  if (!del && ci === cur.length)  { wait = 1900; del = true; }
+  else if (del && ci === 0)       { del = false; pi = (pi + 1) % phrases.length; wait = 280; }
+  setTimeout(type, wait);
+}
+type();
+
+/* ── PARTICLE CANVAS ─────────────────────────────────── */
+const cvs = document.getElementById('particle-canvas');
+const ctx = cvs.getContext('2d');
+
+function resize() {
+  cvs.width  = window.innerWidth;
+  cvs.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const pts = Array.from({ length: 50 }, () => ({
+  x:  Math.random() * window.innerWidth,
+  y:  Math.random() * window.innerHeight,
+  r:  Math.random() * 1.8 + 0.4,
+  vx: (Math.random() - 0.5) * 0.25,
+  vy: (Math.random() - 0.5) * 0.25,
+  op: Math.random() * 0.3 + 0.05,
+  ring: Math.random() > 0.55,
+  pulse: Math.random() * Math.PI * 2  /* phase offset */
+}));
+
+let frame = 0;
+function drawPts() {
+  ctx.clearRect(0, 0, cvs.width, cvs.height);
+  frame++;
+  pts.forEach(p => {
+    const pulse = 0.5 + 0.5 * Math.sin(frame * 0.018 + p.pulse);
+    const op = p.op * (0.6 + 0.4 * pulse);
+    ctx.beginPath();
+    if (p.ring) {
+      ctx.arc(p.x, p.y, p.r * 2.5, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(46,128,96,${op * 0.55})`;
+      ctx.lineWidth = 0.6;
+      ctx.stroke();
+    } else {
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(46,128,96,${op})`;
+      ctx.fill();
+    }
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0)          p.x = cvs.width;
+    if (p.x > cvs.width)  p.x = 0;
+    if (p.y < 0)          p.y = cvs.height;
+    if (p.y > cvs.height) p.y = 0;
+  });
+
+  /* faint connecting lines for nearby particles */
+  for (let i = 0; i < pts.length; i++) {
+    for (let j = i + 1; j < pts.length; j++) {
+      const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist < 90) {
+        ctx.beginPath();
+        ctx.moveTo(pts[i].x, pts[i].y);
+        ctx.lineTo(pts[j].x, pts[j].y);
+        ctx.strokeStyle = `rgba(46,128,96,${0.06 * (1 - dist/90)})`;
+        ctx.lineWidth = 0.4;
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(drawPts);
+}
+drawPts();
+
+/* ── SCROLL REVEAL (Intersection Observer) ───────────── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal, .stagger').forEach(el => obs.observe(el));
+
+/* ── SCROLL SPY ──────────────────────────────────────── */
+const mainEl = document.getElementById('main');
+const sectionIds = ['about','research','skills','projects','awards','contact'];
+
+mainEl.addEventListener('scroll', () => {
+  let active = '';
+  sectionIds.forEach(id => {
+    const s = document.getElementById(id);
+    if (s && s.offsetTop - 130 <= mainEl.scrollTop) active = id;
+  });
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('active',
+      n.getAttribute('onclick') && n.getAttribute('onclick').includes(`'${active}'`)
+    );
+  });
+}, { passive: true });
+
+/* ── SMOOTH SCROLL ───────────────────────────────────── */
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) mainEl.scrollTo({ top: el.offsetTop - 64, behavior: 'smooth' });
+}
+
+/* ── COUNTER ANIMATION ───────────────────────────────── */
+function countUp(el, target, dur = 1400) {
+  const start = performance.now();
+  const tick = now => {
+    const p = Math.min((now - start) / dur, 1);
+    const ease = 1 - Math.pow(1 - p, 3);  /* ease-out cubic */
+    el.textContent = Math.floor(ease * target);
+    if (p < 1) requestAnimationFrame(tick);
+    else el.textContent = target;
+  };
+  requestAnimationFrame(tick);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('[data-target]').forEach(el => {
+        countUp(el, +el.dataset.target);
+      });
+      statsObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.35 });
+
+const aboutSec = document.getElementById('about');
+if (aboutSec) statsObs.observe(aboutSec);
+</script>
+
+</body>
+</html>
