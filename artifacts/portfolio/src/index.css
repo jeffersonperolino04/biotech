@@ -1015,8 +1015,9 @@ nav.sidebar-nav {
 @media (max-width: 860px) {
   /* Hide desktop sidebar */
   .sidebar { display: none; }
+  .hero { display: none; }
   /* No left margin on mobile */
-  .main { margin-left: 0; padding: 0; }
+  .main { margin-left: 0; padding: 0; overflow-x: hidden; max-width: 100%; }
 
   /* ─── MOBILE HERO ─── */
   .mobile-hero {
