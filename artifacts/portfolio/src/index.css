@@ -474,6 +474,14 @@ nav.sidebar-nav {
   background: #6dc99e;
   box-shadow: 0 4px 18px rgba(74, 171, 130, 0.25);
 }
+[data-theme="dark"] .mh-btn-primary {
+  background: #4aab82;
+  color: #fff;
+}
+
+[data-theme="dark"] .mh-btn-primary:hover {
+  background: #6dc99e;
+}
 
 [data-theme="dark"] .btn-secondary {
   border-color: rgba(74, 171, 130, 0.40);
