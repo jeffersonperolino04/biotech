@@ -797,8 +797,68 @@ function AwardsMarquee() {
   );
 }
 
+const SKILL_CATEGORIES = [
+  { key: "all",     label: "All" },
+  { key: "mol",     label: "Molecular" },
+  { key: "micro",   label: "Microbiology" },
+  { key: "field",   label: "Field Biology" },
+  { key: "general", label: "General Lab" },
+  { key: "soft",    label: "Soft Skills" },
+];
+
+const SKILL_PILLS = [
+  { label: "DNA Extraction",              cat: "mol" },
+  { label: "Gel Electrophoresis",         cat: "mol" },
+  { label: "Band Analysis",               cat: "mol" },
+  { label: "Gel Imaging",                 cat: "mol" },
+  { label: "Aseptic Technique",           cat: "micro" },
+  { label: "Culture Media Prep",          cat: "micro" },
+  { label: "Microbial Isolation",         cat: "micro" },
+  { label: "Gram Staining",               cat: "micro" },
+  { label: "Serial Dilution",             cat: "micro" },
+  { label: "Colony Counting",             cat: "micro" },
+  { label: "Ecosystem Assessment",        cat: "field" },
+  { label: "Litter Trap Deployment",      cat: "field" },
+  { label: "Species Inventory",           cat: "field" },
+  { label: "Shannon-Wiener Index",        cat: "field" },
+  { label: "Simpson's Index",             cat: "field" },
+  { label: "Micropipetting",              cat: "general" },
+  { label: "Solution Preparation",        cat: "general" },
+  { label: "Lab Safety & Waste Disposal", cat: "general" },
+  { label: "Scientific Report Writing",   cat: "general" },
+  { label: "Research Leadership",         cat: "soft" },
+  { label: "Data Interpretation",         cat: "soft" },
+  { label: "Science Communication",       cat: "soft" },
+  { label: "Team Coordination",           cat: "soft" },
+];
 const FORMSPREE_URL = "https://formspree.io/f/mnjwvwry";
 
+function SkillsFilter() {
+  const [active, setActive] = useState("all");
+
+  return (
+    <>
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 16 }}>
+        {SKILL_CATEGORIES.map(({ key, label }) => (
+          <button
+            key={key}
+            className={`skill-filter-btn${active === key ? " active" : ""}`}
+            onClick={() => setActive(key)}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+      <div className="skill-pills-wrap">
+        {SKILL_PILLS
+          .filter(p => active === "all" || p.cat === active)
+          .map(p => (
+            <span key={p.label} className="skill-pill">{p.label}</span>
+          ))}
+      </div>
+    </>
+  );
+}
 function ContactSection() {
   const [form, setForm] = useState({
     name: "",
@@ -1132,76 +1192,13 @@ function MainContent({
       </section>
 
       {/* LAB SKILLS */}
-      <section className="section reveal" id="skills">
-        <div className="sec-head">
-          <span className="sec-label">Laboratory Skills & Tools</span>
-          <div className="sec-line" />
-        </div>
-        <div className="skills-wrap">
-          {[
-            {
-              cat: "Molecular",
-              pills: [
-                "DNA Extraction",
-                "Gel Electrophoresis",
-                "Band Analysis",
-                "Gel Imaging",
-              ],
-            },
-            {
-              cat: "Microbiology",
-              pills: [
-                "Aseptic Technique",
-                "Culture Media Prep",
-                "Microbial Isolation",
-                "Gram Staining",
-                "Serial Dilution",
-                "Colony Counting",
-              ],
-            },
-            {
-              cat: "Field Biology",
-              pills: [
-                "Ecosystem Assessment",
-                "Litter Trap Deployment",
-                "Species Inventory",
-                "Shannon-Wiener Index",
-                "Simpson's Index",
-              ],
-            },
-            {
-              cat: "General Lab",
-              pills: [
-                "Micropipetting",
-                "Solution Preparation",
-                "Lab Safety & Waste Disposal",
-                "Scientific Report Writing",
-              ],
-            },
-            {
-              cat: "Soft Skills",
-              pills: [
-                "Research Leadership",
-                "Data Interpretation",
-                "Science Communication",
-                "Team Coordination",
-              ],
-            },
-          ].map(({ cat, pills }) => (
-            <div key={cat} className="skill-row">
-              <div className="skill-cat">{cat}</div>
-              <div className="pills">
-                {pills.map((p) => (
-                  <span key={p} className="pill">
-                    {p}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
+<section className="section reveal" id="skills">
+  <div className="sec-head">
+    <span className="sec-label">Laboratory Skills & Tools</span>
+    <div className="sec-line" />
+  </div>
+  <SkillsFilter />
+</section>
       {/* PROJECTS */}
       <section className="section reveal" id="projects">
         <div className="sec-head">
