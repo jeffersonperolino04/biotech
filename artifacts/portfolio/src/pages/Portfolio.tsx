@@ -466,24 +466,23 @@ function ToolCell({ title, children }: { title: string; children: React.ReactNod
 const TM_STYLES = `
   @keyframes tm-go-left  { from{transform:translateX(0)} to{transform:translateX(-25%)} }
   @keyframes tm-go-right { from{transform:translateX(-25%)} to{transform:translateX(0)} }
-  .tm-lane { position:relative; overflow:hidden; }
-  .tm-lane::before,.tm-lane::after {
-    content:''; position:absolute; top:0; bottom:0; width:100px; z-index:3; pointer-events:none;
+  .tm-lane {
+    position:relative; overflow:hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
   }
-  .tm-lane::before { left:0;  background:linear-gradient(to right,#080f0a 10%,transparent); }
-  .tm-lane::after  { right:0; background:linear-gradient(to left, #080f0a 10%,transparent); }
   .tm-track { display:flex; width:max-content; padding:8px 0; will-change:transform; }
   .tm-track-left  { animation:tm-go-left  22s linear infinite; }
   .tm-track-right { animation:tm-go-right 22s linear infinite; }
   .tm-track-left:hover,.tm-track-right:hover { animation-play-state:paused; }
   .tm-cell {
     width:78px; height:78px; margin:0 9px; border-radius:18px;
-    border:0.5px solid rgba(255,255,255,0.07);
-    background:rgba(255,255,255,0.03);
+    border:0.5px solid rgba(128,128,128,0.15);
+    background:rgba(128,128,128,0.06);
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0; transition:border-color 0.3s,background 0.3s; cursor:default;
   }
-  .tm-cell:hover { border-color:rgba(46,194,122,0.3); background:rgba(46,194,122,0.05); }
+  .tm-cell:hover { border-color:rgba(46,194,122,0.4); background:rgba(46,194,122,0.08); }
 `;
 
 const ROW1 = [
@@ -515,7 +514,7 @@ function ToolsMarquee() {
       <div className="sec-head">
         <span className="sec-label">Tools &amp; Technologies</span>
         <div className="sec-line" />
-        <span style={{ fontFamily: "Georgia,serif", fontStyle: "italic", fontSize: 12, color: "rgba(255,255,255,0.22)", whiteSpace: "nowrap" }}>
+        <span style={{ fontFamily: "Georgia,serif", fontStyle: "italic", fontSize: 12, color: "rgba(128,128,128,0.6)", whiteSpace: "nowrap" }}>
           9 tools
         </span>
       </div>
